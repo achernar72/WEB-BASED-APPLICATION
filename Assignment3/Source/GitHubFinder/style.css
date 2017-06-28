@@ -1,0 +1,28 @@
+.login-container{
+    width: 450px;
+    height: 150px;
+    margin-left: 550px;
+    margin-right: 200px;
+    margin-top: 250px;
+    background-color: aquamarine;
+    text-align: center;
+}
+.homepage{
+
+    background-color: cadetblue;
+}
+
+.register-container{
+    width: 450px;
+    height: 400px;
+    margin-left: 550px;
+    margin-right: 200px;
+    margin-top: 200px;
+    text-align: center;
+    background-color:cadetblue;;
+}
+.git{
+    width: 450px;
+    height: 150px;
+
+}
