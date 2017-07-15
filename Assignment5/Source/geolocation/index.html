@@ -1,54 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-ng-app="GoogleDirection">
 <head>
-    <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="script" href="script.js">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps,Weather and YouTubeApi</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWhSE1HAi753_M8rcFTfcbBXUQInf8y6c&v=3.exp"></script>
+    <script src="script.js"></script>
+
+    <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
 </head>
-<body>
-<div id="map"></div>
-<script>
-    var map, infoWindow;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 6
-        });
-        infoWindow = new google.maps.InfoWindow;
+<body bgcolor="#f8f8ff">
+<div class="wrap">
+    <div class="floatleft">
+        <!--Google Maps -->
+        <h1>Google Maps & Weather Services</h1>
 
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
+        <div class="wrapp" ng-controller="googlemaps">
+            <div class="row">
+                <b>Source Place:</b>
+                <input type="text" placeholder="Enter source place" ng-model="startlocation" id="source_loc"/>
+                <b>Destination Place:</b>
+                <input type="text" placeholder="Enter destination place" ng-model="endlocation" id="des_loc" />
+                <button class="button" id="btn" ng-click="calcRoute()">
+                    <b>Get Direction</b>
+                </button>
+                <br><br>
+            </div>
+            <div id="map-canvas" style="height: 400px;,width:500"></div>
+        </div>
+        <div class="table">
+            <table>
+                <!--Source weather-->
+                <td>
+                    <div ng-controller="weatherCtrl">
 
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
-                infoWindow.open(map);
-                map.setCenter(pos);
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
-    }
+                        <form>
+                            <div class="form-group">
+                                <input class="button" type="submit" value="Source Weather" ng-click="findWeather(zip)" />
+                            </div>
+                        </form>
+                        <p ng-show="zip">Searching the forecasts for: {{zip}}</p>
+                        <div>
+                            <h2><i>{{ place.location.city }}  Forecast </i></h2>
+                            <h3><img class="img-thumbnail forecast-img" src="http://l.yimg.com/a/i/us/we/52/{{place.item.condition.code}}.gif" />Current: {{ place.item.condition.text }} | {{ place.item.condition.temp }}F</h3>
+                        </div>
+                    </div>
+                </td>
+                <br><br>
+            </table>
+        </div>
+    </div>
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-    }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2gcTf1wLzQYGqtQXBpHqE0j3-fJsGs8E&callback=initMap">
-</script>
+
+</div>
+</div>
 </body>
 </html>
