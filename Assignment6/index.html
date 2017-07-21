@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Portal</title>
+    /*tag for stylesheet */
+    <link rel="stylesheet" href="style.css">
+ /*tag for the java script*/
+    <script src="script.js"></script>
+    /*tags for the firebase */
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script src="/__/firebase/4.0.0/firebase-app.js"></script>
+    <script src="/__/firebase/4.0.0/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
+</head>
+<body>
+
+<div class="credentials">
+    /*username and password for login by typing the credential we can use it by the firebase application*/
+    <a><b>Username :</b><input type="text" placeholder="E-Mail/Username" name="username" id="username"></a><br>
+    <a><b>Password :</b><input type="password" placeholder="Password" name="password" id="password"></a><br><br>
+    <button onclick="home()" style="background-color: #00cab3">Login</button>
+
+</div>
+</body>
+</html>
