@@ -18,14 +18,20 @@ function home() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     if (username == "" && password == "") {
-        window.open("http://localhost:63342/WEB-BASED-APPLICATION/WEB-BASED-APPLICATION/WEB-BASED-APPLICATION/Assignment6/home.html?_ijt=uga0gl5kpjkvk1jj6cv1qaql3d")
+        window.open("http://localhost:63342/WEB-BASED-APPLICATION/WEB-BASED-APPLICATION/WEB-BASED-APPLICATION/Assignment6/Source/MEAN_Stack_App/home.html?_ijt=pvejt5hh997qr933ucgp6n07hh")
     }
     else {
         alert("Incorrect username and/or password.");
     }
 }
 
+function register() {
+   window.location.replace("http://localhost:63342/WEB-BASED-APPLICATION/WEB-BASED-APPLICATION/WEB-BASED-APPLICATION/Assignment6/Source/register.html?_ijt=ejdvi52nsqd7pdgd860nbr961m")
+
+}
 
 
-
-
+function login()
+{
+    window.location.replace("http://localhost:63342/WEB-BASED-APPLICATION/WEB-BASED-APPLICATION/WEB-BASED-APPLICATION/Assignment6/Source/index.html?_ijt=a3pa6c3cnk16kt3be88l6vmf56")
+}
